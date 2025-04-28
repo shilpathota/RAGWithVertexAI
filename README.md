@@ -1,5 +1,3 @@
-# RAGWithVertexAI
-
 # Enhanced RAG System: Chat Summarization + Document QA
 
 ## 🚀 Project Overview
