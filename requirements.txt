@@ -1,0 +1,14 @@
+fastapi~=0.112.2
+uvicorn
+openai
+langchain
+chromadb
+pdfplumber
+python-dotenv~=1.0.0
+sqlalchemy
+google-cloud-aiplatform>=1.39.0
+vertexai~=1.71.1
+protobuf~=5.29.4
+requests~=2.32.0
+sentence-transformers~=2.2.2
+chromadb~=0.4.22

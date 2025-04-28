@@ -1,0 +1,6 @@
+Summarize the following customer service conversation. Include only the key issue, any actions taken, and the final resolution. Do not include timestamps, greetings, or agent names.
+
+Conversation:
+{{chat_log}}
+
+Summary:
