@@ -1,6 +1,6 @@
 # Enhanced RAG System: Chat Summarization + Document QA
 
-## 🚀 Project Overview
+##  Project Overview
 
 This project started as a **Chat Summarization API** using **Vertex AI Gemini** to generate concise summaries from chat conversations.
 
@@ -18,7 +18,7 @@ Built using:
 
 ---
 
-## ✨ Features
+##  Features
 
 - Upload PDF documents.
 - Generate dense embeddings using SentenceTransformer.
@@ -29,7 +29,7 @@ Built using:
 
 ---
 
-## 📚 Example
+##  Example
 
 1. Upload research paper: `Artificial Intelligence and Its Applications`
 2. Ask: `"What is the synopsis of the paper?"`
@@ -39,14 +39,14 @@ Built using:
 
 ---
 
-## 📊 System Architecture (Block Diagram)
+##  System Architecture (Block Diagram)
 
 ![ChatGPT Image Apr 27, 2025, 09_29_35 PM](https://github.com/user-attachments/assets/e5dfc7b1-7d79-4d2e-ae63-2143c3f782f9)
 
 
 ---
 
-## ⚙️ Tech Stack
+##  Tech Stack
 
 - **FastAPI** — Lightweight API framework
 - **FAISS** — Vector similarity search engine
@@ -57,7 +57,7 @@ Built using:
 
 ---
 
-## 🛠 Setup Instructions
+##  Setup Instructions
 
 1. **Clone the repository**
 ```bash
@@ -92,7 +92,7 @@ uvicorn app.main:app --port 8765 --reload
 
 ---
 
-## 🚀 API Endpoints
+##  API Endpoints
 
 ### 1. Upload Document
 - **POST** `/upload-doc`
@@ -118,7 +118,7 @@ uvicorn app.main:app --port 8765 --reload
 
 ---
 
-## 🔥 Future Enhancements
+##  Future Enhancements
 
 - Document chunking for long PDFs
 - Streaming response from Gemini (for long answers)
@@ -128,7 +128,7 @@ uvicorn app.main:app --port 8765 --reload
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 - [Linkedin](https://www.linkedin.com/in/shilpa-thota/)
 - [GitHub](https://github.com/shilpathota)
