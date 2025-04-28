@@ -61,8 +61,8 @@ Built using:
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/shilpathota/RAGWithVertexAI.git
+cd RAGWithVertexAI
 ```
 
 2. **Create a virtual environment**
