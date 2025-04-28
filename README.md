@@ -130,7 +130,7 @@ uvicorn app.main:app --port 8765 --reload
 
 ## 👨‍💻 Author
 
-- [Shilpa Thota]([Linkedin](https://www.linkedin.com/in/shilpa-thota/))
+- [Linkedin](https://www.linkedin.com/in/shilpa-thota/)
 - [GitHub](https://github.com/shilpathota)
 
 ---
