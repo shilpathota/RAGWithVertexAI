@@ -9,6 +9,10 @@ It has now been **enhanced** to support:
 - **Semantic Search** inside documents using **FAISS**
 - **Natural Language Question Answering** from uploaded content
 
+### ✅ Now MCP-Compliant!
+
+This system has been **upgraded with MCP (Model Context Protocol)** — a standardized interface for unified interaction between the client and backend LLM services.
+
 Built using:
 - **FAISS** (Facebook AI Similarity Search) for local vector database
 - **SentenceTransformer** (`all-MiniLM-L6-v2`) for embeddings
@@ -29,20 +33,77 @@ Built using:
 
 ---
 
-##  Example
+## 💡 Example Flow (via MCP)
 
-1. Upload research paper: `Artificial Intelligence and Its Applications`
-2. Ask: `"What is the synopsis of the paper?"`
-3. Result:
+1. Upload a research paper:
+   ```
+   POST /mcp/upload
+   ```
+    - Form-Data: `file=your.pdf`
+    - Metadata JSON (as `metadata` field):
+      ```json
+      {
+        "request_id": "uuid",
+        "context": {
+          "type": "upload_doc",
+          "data_sources": [],
+          "query": "{\"source\": \"chatbot_ui\"}"
+        }
+      }
+      ```
 
-> "The paper examines the features, introduction, definitions, history, applications, growth, and achievements of Artificial Intelligence across sectors like healthcare, finance, agriculture, and more."
+2. Ask a question:
+   ```
+   POST /mcp
+   ```
+   ```json
+   {
+     "request_id": "uuid",
+     "context": {
+       "type": "doc_query",
+       "data_sources": ["uploaded_docs"],
+       "query": "What is the methodology used in this paper?"
+     }
+   }
+   ```
 
+3. Summarize a chat:
+   ```
+   POST /mcp
+   ```
+   ```json
+   {
+     "request_id": "uuid",
+     "context": {
+       "type": "summarization",
+       "data_sources": [],
+       "query": "Customer: Hi, I have an issue...\nAgent: Can you please share your ID?"
+     }
+   }
+   ```
 ---
 
 ##  System Architecture (Block Diagram)
 
 ![ChatGPT Image Apr 27, 2025, 09_29_35 PM](https://github.com/user-attachments/assets/e5dfc7b1-7d79-4d2e-ae63-2143c3f782f9)
 
+### Updated Architecture with MCP
+
+```
++-------------+         +---------------------+        +-----------------+
+| MCP Client  |  <--->  | FastAPI MCP Server  |  --->  | Vertex AI Gemini |
++-------------+         +---------------------+        +-----------------+
+       |                        |                            ↑
+       |                        v                            |
+       |               Semantic Search (FAISS)              |
+       |                        ^                            |
+       |                Document Embeddings                 |
+       +-----------------+     |     +-----------------------+
+                         |     v     |
+                         | SentenceTransformer
+                         |
+                     Uploaded PDFs (pdfplumber)
+```
 
 ---
 
@@ -92,29 +153,27 @@ uvicorn app.main:app --port 8765 --reload
 
 ---
 
-##  API Endpoints
+## 🔌 MCP API Endpoints
 
-### 1. Upload Document
-- **POST** `/upload-doc`
-- **Body**: Form-Data (Key: `file`, Type: File)
-
-### 2. Query Document
-- **POST** `/query-doc`
-- **Body**: JSON
+### 1. Unified Request Handling (MCP)
+- `POST /mcp`
+- Request:
 ```json
 {
-  "question": "What is the main idea of the document?"
+  "request_id": "uuid",
+  "context": {
+    "type": "doc_query" | "summarization",
+    "data_sources": [],
+    "query": "..."
+  }
 }
 ```
 
-### 3. Summarize Chat
-- **POST** `/summarize-chat`
-- **Body**: JSON
-```json
-{
-  "chat_log": "Your conversation log here"
-}
-```
+### 2. Document Upload (MCP)
+- `POST /mcp/upload`
+- Form-Data:
+    - `file`: PDF file
+    - `metadata`: JSON with context and source
 
 ---
 
@@ -135,8 +194,6 @@ uvicorn app.main:app --port 8765 --reload
 
 ---
 
-## ⭐️ If you find this project useful, give it a star and share it with others!
-
 ---
 
-#AI #MachineLearning #VertexAI #FAISS #FastAPI #DocumentSummarization #ChatSummarization #Python #RAG #GitHubProject
+#AI #MachineLearning #VertexAI #MCP #LLM #FAISS #FastAPI #DocumentSummarization #ChatSummarization #Python #RAG #GitHubProject

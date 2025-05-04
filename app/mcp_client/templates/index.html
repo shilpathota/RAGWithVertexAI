@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MCP Chatbot UI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: darkcyan;
+            color: lightcyan;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: none;
+        }
+        .btn-primary, .btn-success, .btn-secondary {
+            width: 100%;
+        }
+        .robot-img {
+            width: 150px;
+            margin: auto;
+            display: block;
+        }
+        .card-title {
+            color: lightgray;
+        }
+        textarea, input {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        pre {
+            background: transparent;
+            color: #ffdd88;
+        }
+    </style>
+</head>
+<body>
+<div class="container py-5">
+    <img src="static/robot.gif" class="robot-img mb-4" alt="Chatbot Robot">
+    <h2 class="text-center mb-5">🤖 MCP Chatbot Assistant 🤖</h2>
+
+    <div class="row g-4">
+
+        <!-- Summarize Chat -->
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h4 class="card-title">📝 Summarize Chat</h4>
+                    <textarea id="chat_log" class="form-control" rows="4" placeholder="Paste chat log..."></textarea>
+                    <button onclick="summarize()" class="btn btn-primary mt-3">Summarize</button>
+                    <p class="mt-3"><strong>Summary:</strong></p>
+                    <p id="summary" class="text-light"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Query -->
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h4 class="card-title">🔍 Ask Questions</h4>
+                    <input type="text" id="question" class="form-control" placeholder="Your question...">
+                    <button onclick="ask()" class="btn btn-success mt-3">Ask</button>
+                    <p class="mt-3"><strong>Answer:</strong></p>
+                    <p id="answer" class="text-light"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Upload -->
+        <div class="col-md-12">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h4 class="card-title">📁 Upload Document (PDF)</h4>
+                    <input type="file" id="file_input" class="form-control">
+                    <button onclick="upload()" class="btn btn-secondary mt-3">Upload</button>
+                    <p class="mt-3"><strong>Upload Result:</strong></p>
+                    <pre id="upload_result"></pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="static/script.js"></script>
+</body>
+</html>
